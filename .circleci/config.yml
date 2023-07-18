@@ -22,10 +22,8 @@ jobs:
             
       - run:
           name: Push images
-          command: |
-            systemctl daemon-reload
-            systemctl restart docker
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+          command: |            
+            echo "Binay@1989" | docker login -u binay18shah --password-stdin
             docker push binay18shah/udagram-frontend
             docker push binay18shah/udagram-api-feed
             docker push binay18shah/udagram-api-user
