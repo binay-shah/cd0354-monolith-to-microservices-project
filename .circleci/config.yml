@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Push images
           command: |
-            echo "$DOCKER_PASSWORD" | docker login hub.docker.com -u "$DOCKER_USERNAME" --password-stdin
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
             docker push binay18shah/udagram-frontend
             docker push binay18shah/udagram-api-feed
             docker push binay18shah/udagram-api-user
