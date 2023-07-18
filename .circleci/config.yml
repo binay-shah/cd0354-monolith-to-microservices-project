@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   mybuildjob:
     docker:
-      - image: docker/compose:1.29.1
+      - image: docker
     steps:
       - checkout
       - run:
