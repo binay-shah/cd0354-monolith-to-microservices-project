@@ -1,28 +1,32 @@
 version: 2.1
-
 jobs:
-  mybuildjob:
+  build:
+    working_directory: ~/udagram-microservices
     docker:
-      - image: docker
+      - image: circleci/node:14
     steps:
       - checkout
       - run:
-          name: build and push
+          name: Check versions
           command: |
-             docker-compose -f docker-compose-build.yaml build --parallel
-             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-             docker push binay18shah/udagram-api-feed:v1
-             docker push binay18shah/udagram-api-user:v1
-             docker push binay18shah/udagram-frontend:v1
-             docker push binay18shah/reverseproxy:v1
-
-workflows: 
-  version: 2  
-  build_and_push:
-    jobs:
-      - mybuildjob
-      
-
-  
-    
-        
+            docker --version
+            docker-compose --version
+      - run:
+          name: Build images
+          command: |            
+            docker-compose -f docker-compose-build.yaml build --parallel
+            docker tag udagram-frontend binay18shah/udagram-frontend
+            docker tag udagram-api-feed binay18shah/udagram-api-feed
+            docker tag udagram-api-user binay18shah/udagram-api-user
+            docker tag udagram-reverseproxy binay18shah/udagram-reverseproxy
+      - run:
+          name: Push images
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            docker push binay18shah/udagram-frontend
+            docker push binay18shah/udagram-api-feed
+            docker push binay18shah/udagram-api-user
+            docker push binay18shah/udagram-reverseproxy
+    environment:
+      DOCKER_USERNAME: "$DOCKER_USERNAME"
+      DOCKER_PASSWORD: "$DOCKER_PASSWORD"
