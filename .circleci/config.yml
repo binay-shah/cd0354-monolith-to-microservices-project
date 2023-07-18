@@ -18,11 +18,11 @@ jobs:
 
 worksflows: 
   version: 2  
-    jobs:
-      - mybuildjob
-      environment:
-        DOCKER_USERNAME: $DOCKER_USERNAME
-        DOCKER_PASSWORD: $DOCKER_PASSWORD
+  jobs:
+    - mybuildjob
+    environment:
+      DOCKER_USERNAME: $DOCKER_USERNAME
+      DOCKER_PASSWORD: $DOCKER_PASSWORD
 
   
     
