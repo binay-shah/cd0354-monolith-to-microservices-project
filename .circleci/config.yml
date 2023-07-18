@@ -1,0 +1,20 @@
+version: 2.1
+
+jobs:
+  mybuildjob:
+    docker:
+      - image: docker/compose:1.29.1
+    steps:
+      - checkout
+      - run:
+          name: build and push
+          command: |
+             docker-compose -f docker-compose.build.yaml build --parallel
+             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+             docker push binay18shah/udagram-api-feed
+             docker push binay18shah/udagram-api-user
+             docker push binay18shah/udagram-frontend
+             docker push binay18shah/reverseproxy
+  
+    
+        
