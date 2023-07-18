@@ -9,7 +9,7 @@ jobs:
       - run:
           name: build and push
           command: |
-             docker-compose -f docker-compose.build.yaml build --parallel
+             docker-compose -f docker-compose-build.yaml build --parallel
              echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
              docker push binay18shah/udagram-api-feed
              docker push binay18shah/udagram-api-user
