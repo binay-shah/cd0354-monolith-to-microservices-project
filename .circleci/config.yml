@@ -16,7 +16,7 @@ jobs:
              docker push binay18shah/udagram-frontend
              docker push binay18shah/reverseproxy
 
-worksflows: 
+workflows: 
   version: 2  
   build_and_push:
     jobs:
