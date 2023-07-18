@@ -24,10 +24,10 @@ jobs:
           name: Push images
           command: |            
             echo "Binay@1989" | docker login -u binay18shah --password-stdin
-            docker push binay18shah/udagram-frontend
-            docker push binay18shah/udagram-api-feed
-            docker push binay18shah/udagram-api-user
-            docker push binay18shah/udagram-reverseproxy
+            docker push binay18shah/udagram-frontend:latest
+            docker push binay18shah/udagram-api-feed:latest
+            docker push binay18shah/udagram-api-user:latest
+            docker push binay18shah/udagram-reverseproxy:latest
     environment:
       DOCKER_USERNAME: "$DOCKER_USERNAME"
       DOCKER_PASSWORD: "$DOCKER_PASSWORD"
