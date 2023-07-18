@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   build:    
-    working_directory: /app
+    working_directory: /cd0354-monolith-to-microservices-project
     docker:
       - image: circleci/node:14
     steps:
