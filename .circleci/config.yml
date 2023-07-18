@@ -17,8 +17,7 @@ jobs:
              docker push binay18shah/reverseproxy
 
 worksflows: 
-  version: 2
-  build:
+  version: 2  
     jobs:
       - mybuildjob
       environment:
